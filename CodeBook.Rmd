@@ -29,13 +29,15 @@ Course Project - CodeBook
 
 Confirm the working directoy you want to use for anlaysis. The most important is so no change below as we are setting a directory for the analysis.
 
-```dir <-"./CourseProject/"
+```
+dir <-"./CourseProject/"
 if (file.exists(dir)){
   setwd(file.path(dir))
   } else {
   dir.create(file.path(dir))
   setwd(file.path(dir))
-}```
+}
+```
 
 ```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.```
 
@@ -62,7 +64,8 @@ The downloader package is required to unzip the file.
 
 Call the list.dirs() and you should see the list below
 
-```list.dirs()
+```
+list.dirs()
 #[1] "."                                        "./UCI HAR Dataset"                       
 #[3] "./UCI HAR Dataset/test"                   "./UCI HAR Dataset/test/Inertial Signals" 
 #[5] "./UCI HAR Dataset/train"                  "./UCI HAR Dataset/train/Inertial Signals"
@@ -151,14 +154,15 @@ This function confirms the number observations and variables which should be as 
 data_full <- rbind(train_full, test_full)
 dim(data_full)
 ```
-#This is to confirm that we will have 561 variables after the first column which represents the subject IDs and a second colum for the activity labels, 563 columsn in total
-# [1] 10299   563
+This is to confirm that we will have 561 variables after the first column which represents the subject IDs and a second colum for the activity labels, 563 columsn in total
+[1] 10299   563
 
 and confirm that we have now about 10299 observations.
 
 ```str(data_full)```
 
-```#'data.frame':  10299 obs. of  563 variables
+```
+#'data.frame':  10299 obs. of  563 variables
 ```
 
 #### 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -175,7 +179,8 @@ Assign the measurements labels to the columns in data_full
 
 This will show us the file will the names of all the variables.
 
-```#'data.frame':  10299 obs. of  563 variables:
+```
+#'data.frame':  10299 obs. of  563 variables:
 # $ Subject ID                          : int  1 1 1 1 1 1 1 1 1 1 ...
 #$ Activity                            : int  5 5 5 5 5 5 5 5 5 5 ...
 #$ tBodyAcc-mean()-X                   : num  0.289 0.278 0.28 0.279 0.277 ...
