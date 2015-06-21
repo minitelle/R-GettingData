@@ -7,7 +7,7 @@ Course Project - CodeBook
 - All details and explanations defined below have been performed and tested using R studio Version 0.98.1103 on a MAC 10.9.5.
 - The work outlined in the Codebook.rm/rmd and run_analysis.R assume that and internet connection is available to download the project necessary files.
 - Several R packages have been used such as: downloader, plyr, dplyr, httr and reshape2 have been specified in the run_analysis.R file in the same directory: github.com/minitelle/R- GettingData`
-- Note however that the run_analysis file includes the needed functions to download the packages if need be, you can search for the term "install.packages" and remove the "#" in the "run_analysis.R" file with the install.packages() function for the above packages.
+- Note however that the run_analysis file includes the needed functions to download the packages if need be, you can search for the term "install.packages" and remove the "#" in the "run_analysis.R" with the install.packages() function for the above packages.
 ```
 
 
@@ -25,7 +25,8 @@ Course Project - CodeBook
 ### Data Preparation -  Preliminary Steps prior to covering the project tasks in the script file run_analysis.R
 
 
-```getwd()```
+```getwd()
+```
 
 Confirm the working directoy you want to use for anlaysis. The most important is so no change below as we are setting a directory for the analysis.
 
@@ -37,26 +38,35 @@ if (file.exists(dir)){
   setwd(file.path(dir))
 }```
 
-```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.```
+```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.
+```
 
-```getwd()```
+```getwd()
+```
 Set the file to download for analysis. The assumption is that the directory doens't already exist so this si torpovide you with the file used for the project an dhave a fresh new install.
 
-```download_zip <- download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile="project_dataset.zip", method ="curl")```
+```download_zip <- download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile="project_dataset.zip", method ="curl")
+```
 
 Confirm the zip file has been downloded -  the dowlonad might take sometime.
 
 ```file.exists("project_dataset.zip")
-#[1] TRUE```
+#[1] TRUE
+```
 
 To unzip the file the simplest is to download the downloader package. the assumption is that you do not have it.
 If you don't please proceed. If you do please proceed right away to calling the library instead of starting by downloading it.
 
-```install.packages(downloader)``` Only install if you have haven't installed the package before.
-```library("downloader")```
+```install.packages(downloader)
+``` 
+Only install if you have haven't installed the package before.
+
+```library("downloader")
+```
 The downloader package is required to unzip the file.
 
-```unzip ("project_dataset.zip", exdir = "./")```
+```unzip ("project_dataset.zip", exdir = "./")
+```
 Call the list.dirs() and you should see the list below
 
 ```list.dirs()
@@ -87,38 +97,50 @@ We will work below on combining the files to satisfy the project.
 Load a few R packages to complete the project. This assums these packages have already been downloaded. 
 If the packages are already installed then proceed to loading the packages, no need to download them again:
 
-```install.packages("plyr")
+```
+install.packages("plyr")
 install.packages("dplyr")
-install.packages("httr")```
+install.packages("httr")
+```
 
 Loading the packages step
 
 ```library(plyr)
 library(dplyr)
-library(httr)```
+library(httr)
+```
 
 - train data set cbind() - Combining the the files for the train folder is our data set for 70% of the volunteers.
 
 *Strain: represents the subjects IDs
-```Strain <- read.table("./UCI HAR Dataset/train/subject_train.txt")```
+```Strain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+```
 *Ytrain: represents the activity label that we will map to the activity_labels.txt file
-```Ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")```
+```Ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
+```
 *Xtrain: represents the 561 measurements whose label we wil add using the features.txt info file.
-```Xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")```
+```Xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
+```
 *Combine the 3 Train files by columns with the order: Strain, Ytrain, Xtrain.*
 ```train_full <- cbind(Strain, Ytrain, Xtrain) 
-dim(train_full)```
-```#[1] 7352  563```
+dim(train_full)
+```
+
+```#[1] 7352  563
+```
 This function confirms the number observations and variables which should be as follows:
 
 - test data set cbind() - Combining the colums for the test folder in our data set for 30% of the volunteers.
 
 *Stest: represents the subjects IDs
-```Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")```
+```Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+```
 *Ytest: represents the activity label that we will map to the activity_labels.txt file
-```Ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")```
+```Ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")
+```
 *Xtest: represents the 561 measurements whose label we wil add using the features.txt info file.
-```Xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")```
+```Xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")
+```
 *Combine the 3 Test files by columns with the order: Stest, Ytest, Xtest.
 ```test_full <- cbind(Stest, Ytest, Xtest)
 dim(test_full)
@@ -372,5 +394,4 @@ The below 66 variables, are the measurements based on the activities each volunt
 * Frequency Body GyroMag std()     
 * Frequency Body GyroJerkMag mean()
 * Frequency Body GyroJerkMag std() 
-
 
