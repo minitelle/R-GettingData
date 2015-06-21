@@ -25,8 +25,7 @@ Course Project - CodeBook
 ### Data Preparation -  Preliminary Steps prior to covering the project tasks in the script file run_analysis.R
 
 
-```getwd()
-```
+```getwd()```
 
 Confirm the working directoy you want to use for anlaysis. The most important is so no change below as we are setting a directory for the analysis.
 
@@ -38,35 +37,29 @@ if (file.exists(dir)){
   setwd(file.path(dir))
 }```
 
-```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.
-```
+```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.```
 
-```getwd()
-```
+```getwd()```
+
 Set the file to download for analysis. The assumption is that the directory doens't already exist so this si torpovide you with the file used for the project an dhave a fresh new install.
 
-```download_zip <- download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile="project_dataset.zip", method ="curl")
-```
+```download_zip <- download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile="project_dataset.zip", method ="curl")```
 
 Confirm the zip file has been downloded -  the dowlonad might take sometime.
 
-```file.exists("project_dataset.zip")
-#[1] TRUE
-```
+```file.exists("project_dataset.zip") #[1] TRUE```
 
 To unzip the file the simplest is to download the downloader package. the assumption is that you do not have it.
 If you don't please proceed. If you do please proceed right away to calling the library instead of starting by downloading it.
 
-```install.packages(downloader)
-``` 
+```install.packages(downloader)``` 
 Only install if you have haven't installed the package before.
 
-```library("downloader")
-```
+```library("downloader")```
 The downloader package is required to unzip the file.
 
-```unzip ("project_dataset.zip", exdir = "./")
-```
+```unzip ("project_dataset.zip", exdir = "./")```
+
 Call the list.dirs() and you should see the list below
 
 ```list.dirs()
@@ -105,7 +98,8 @@ install.packages("httr")
 
 Loading the packages step
 
-```library(plyr)
+```
+library(plyr)
 library(dplyr)
 library(httr)
 ```
@@ -113,37 +107,36 @@ library(httr)
 - train data set cbind() - Combining the the files for the train folder is our data set for 70% of the volunteers.
 
 *Strain: represents the subjects IDs
-```Strain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
-```
-*Ytrain: represents the activity label that we will map to the activity_labels.txt file
-```Ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
-```
-*Xtrain: represents the 561 measurements whose label we wil add using the features.txt info file.
-```Xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
-```
-*Combine the 3 Train files by columns with the order: Strain, Ytrain, Xtrain.*
-```train_full <- cbind(Strain, Ytrain, Xtrain) 
-dim(train_full)
-```
+```Strain <- read.table("./UCI HAR Dataset/train/subject_train.txt")```
 
-```#[1] 7352  563
-```
+*Ytrain: represents the activity label that we will map to the activity_labels.txt file
+```Ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")```
+
+*Xtrain: represents the 561 measurements whose label we wil add using the features.txt info file.
+```Xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")```
+
+*Combine the 3 Train files by columns with the order: Strain, Ytrain, Xtrain.*
+```train_full <- cbind(Strain, Ytrain, Xtrain)``` 
+```dim(train_full)```
+
+```#[1] 7352  563```
 This function confirms the number observations and variables which should be as follows:
 
 - test data set cbind() - Combining the colums for the test folder in our data set for 30% of the volunteers.
 
 *Stest: represents the subjects IDs
-```Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
-```
+```Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")```
+
 *Ytest: represents the activity label that we will map to the activity_labels.txt file
-```Ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")
-```
+```Ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")```
+
 *Xtest: represents the 561 measurements whose label we wil add using the features.txt info file.
-```Xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")
-```
+```Xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")```
+
 *Combine the 3 Test files by columns with the order: Stest, Ytest, Xtest.
-```test_full <- cbind(Stest, Ytest, Xtest)
-dim(test_full)
+```test_full <- cbind(Stest, Ytest, Xtest)```
+
+```dim(test_full)
 #[1] 2947  563
 ```
 This function confirms the number observations and variables which should be as follows:
@@ -167,12 +160,13 @@ and confirm that we have now about 10299 observations.
 
 Read the features file that includes the names of the measurements in the full data set.
 
-```feat_labels <- read.table("./UCI HAR Dataset/features.txt")
-```
+```feat_labels <- read.table("./UCI HAR Dataset/features.txt")```
+
 Assign the measurements labels to the columns in data_full
 
 ```names(data_full) <- c("SubjectID", "Activity",as.character(feat_labels[,2]))
 ```
+
 ```
 str(data_full) #This will show us the file will the names of all the variables.
 #'data.frame':  10299 obs. of  563 variables:
