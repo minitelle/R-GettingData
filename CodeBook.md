@@ -39,9 +39,12 @@ if (file.exists(dir)){
 }
 ```
 
-```#[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.```
+```
+[1] "/Users/yourname/CourseProject" this is the confirm that the above directory "Course project" has indeed been created.
+```
 
-```getwd()```
+```getwd()
+```
 
 Set the file to download for analysis. The assumption is that the directory doens't already exist so this si torpovide you with the file used for the project an dhave a fresh new install.
 
@@ -49,7 +52,9 @@ Set the file to download for analysis. The assumption is that the directory doen
 
 Confirm the zip file has been downloded -  the dowlonad might take sometime.
 
-```file.exists("project_dataset.zip") #[1] TRUE```
+```file.exists("project_dataset.zip") 
+[1] TRUE
+```
 
 To unzip the file the simplest is to download the downloader package. the assumption is that you do not have it.
 If you don't please proceed. If you do please proceed right away to calling the library instead of starting by downloading it.
@@ -66,9 +71,9 @@ Call the list.dirs() and you should see the list below
 
 ```
 list.dirs()
-#[1] "."                                        "./UCI HAR Dataset"                       
-#[3] "./UCI HAR Dataset/test"                   "./UCI HAR Dataset/test/Inertial Signals" 
-#[5] "./UCI HAR Dataset/train"                  "./UCI HAR Dataset/train/Inertial Signals"
+[1] "."                                        "./UCI HAR Dataset"                       
+[3] "./UCI HAR Dataset/test"                   "./UCI HAR Dataset/test/Inertial Signals" 
+[5] "./UCI HAR Dataset/train"                  "./UCI HAR Dataset/train/Inertial Signals"
 ```
 
 ```
