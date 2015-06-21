@@ -136,7 +136,8 @@ This function confirms the number observations and variables which should be as 
 *Combine the 3 Test files by columns with the order: Stest, Ytest, Xtest.
 ```test_full <- cbind(Stest, Ytest, Xtest)```
 
-```dim(test_full)
+```
+dim(test_full)
 #[1] 2947  563
 ```
 This function confirms the number observations and variables which should be as follows:
@@ -144,7 +145,8 @@ This function confirms the number observations and variables which should be as 
 #### 1. Merge the training and the test sets to create one data set for that an rbin() will suffice
 
 
-```data_full <- rbind(train_full, test_full)
+```
+data_full <- rbind(train_full, test_full)
 dim(data_full)
 ```
 #This is to confirm that we will have 561 variables after the first column which represents the subject IDs and a second colum for the activity labels, 563 columsn in total
@@ -152,8 +154,9 @@ dim(data_full)
 
 and confirm that we have now about 10299 observations.
 
-```str(data_full)
-#'data.frame':  10299 obs. of  563 variables
+```str(data_full)```
+
+```#'data.frame':  10299 obs. of  563 variables
 ```
 
 #### 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -164,8 +167,7 @@ Read the features file that includes the names of the measurements in the full d
 
 Assign the measurements labels to the columns in data_full
 
-```names(data_full) <- c("SubjectID", "Activity",as.character(feat_labels[,2]))
-```
+```names(data_full) <- c("SubjectID", "Activity",as.character(feat_labels[,2]))```
 
 ```
 str(data_full) #This will show us the file will the names of all the variables.
@@ -197,7 +199,8 @@ This will show us that we have 12099 observations and 68 variables.
 
 OR use the str() to see the structure of the file:
 
-```str(data_mean.std)
+```
+str(data_mean.std)
 #'data.frame':  10299 obs. of  68 variables:
 #$ Subject ID                 : int  1 1 1 1 1 1 1 1 1 1 ...
 #$ Activity                   : int  5 5 5 5 5 5 5 5 5 5 ...
