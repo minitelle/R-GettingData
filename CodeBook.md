@@ -125,7 +125,9 @@ This function confirms the number observations and variables which should be as 
 - test data set cbind() - Combining the colums for the test folder in our data set for 30% of the volunteers.
 
 *Stest: represents the subjects IDs
-```Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")```
+```
+Stest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+```
 
 *Ytest: represents the activity label that we will map to the activity_labels.txt file
 ```Ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")```
@@ -169,9 +171,11 @@ Assign the measurements labels to the columns in data_full
 
 ```names(data_full) <- c("SubjectID", "Activity",as.character(feat_labels[,2]))```
 
-```
-str(data_full) #This will show us the file will the names of all the variables.
-#'data.frame':  10299 obs. of  563 variables:
+```str(data_full)``` 
+
+This will show us the file will the names of all the variables.
+
+```#'data.frame':  10299 obs. of  563 variables:
 # $ Subject ID                          : int  1 1 1 1 1 1 1 1 1 1 ...
 #$ Activity                            : int  5 5 5 5 5 5 5 5 5 5 ...
 #$ tBodyAcc-mean()-X                   : num  0.289 0.278 0.28 0.279 0.277 ...
@@ -201,6 +205,8 @@ OR use the str() to see the structure of the file:
 
 ```
 str(data_mean.std)
+```
+```
 #'data.frame':  10299 obs. of  68 variables:
 #$ Subject ID                 : int  1 1 1 1 1 1 1 1 1 1 ...
 #$ Activity                   : int  5 5 5 5 5 5 5 5 5 5 ...
